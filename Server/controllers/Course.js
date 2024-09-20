@@ -2,6 +2,7 @@ const Course = require("../models/Course");
 const Category = require("../models/Category");
 const Section = require("../models/Section")
 const SubSection = require("../models/Subsection")
+const Category = require("../models/Category");
 const User = require("../models/User");
 const { uploadImageToCloudinary } = require("../utils/imageUploader");
 const CourseProgress = require("../models/CourseProgress")
@@ -349,6 +350,14 @@ exports.deleteCourse = async (req, res) => {
       // Delete the section
       await Section.findByIdAndDelete(sectionId)
     }
+
+    // Remove the course ID from categories
+    await Category.updateMany(
+      { courses: courseId }, // Find categories containing the courseId
+      { $pull: { courses: courseId } } // Remove courseId from courses array
+    );
+
+
 
     // Delete the course
     await Course.findByIdAndDelete(courseId)
