@@ -29,7 +29,7 @@ function Home() {
 
                 {/* Heading */}
                 <div className="text-center text-4xl font-semibold">
-                    Empower Your Future with
+                    Empower Your Future with StudyNotion
                     <HighlightText text={"Coding Skills"} />
                 </div>
 
