@@ -36,23 +36,35 @@ function ReviewSlider() {
 
   return (
     <div className="text-white">
-      <div className="my-[50px] h-[184px] max-w-maxContentTab lg:max-w-maxContent">
+      <div className="my-[20px] h-[184px] max-w-maxContentTab lg:max-w-maxContent">
         <Swiper
-          slidesPerView={4}
-          spaceBetween={25}
+          // slidesPerView={4}
+          // spaceBetween={25}
           loop={true}
           freeMode={true}
           autoplay={{
             delay: 2500,
             disableOnInteraction: false,
           }}
+
+          breakpoints={{
+            320: { slidesPerView: 1, spaceBetween: 10 },
+            550: { slidesPerView: 2, spaceBetween: 15 },
+            768: { slidesPerView: 3, spaceBetween: 20 },
+            1024: { slidesPerView: 4, spaceBetween: 25 },
+            1200: { slidesPerView: 5, spaceBetween: 30 },
+          }}
           modules={[FreeMode, Pagination, Autoplay]}
-          className="w-full "
+          className="lg:w-[100vw]"
         >
           {reviews.map((review, i) => {
             return (
               <SwiperSlide key={i}>
-                <div className="flex flex-col gap-3 bg-richblack-800 p-3 text-[14px] text-richblack-25">
+                <div className="flex flex-col gap-2 bg-richblack-800 p-3 text-[14px] text-richblack-25 items-center
+                  sm:w-[90%]             // Smaller width for phones
+                  md:w-[85%]             // Medium width for tablets
+                  lg:w-[75%]             // Larger width for desktops            
+                  rounded-lg  ">
                   <div className="flex items-center gap-4">
                     <img
                       src={

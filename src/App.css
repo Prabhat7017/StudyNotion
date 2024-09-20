@@ -211,9 +211,6 @@ details > summary::-webkit-details-marker {
 }
 
 /* Buttons */
-.yellowButton {
-  @apply cursor-pointer rounded-md bg-yellow-50 px-[20px] py-[8px] font-semibold text-richblack-900;
-}
 
 /* Swiper CSS Starts */
 /* .swiper {
@@ -231,10 +228,28 @@ details > summary::-webkit-details-marker {
   @apply bg-richblack-800 text-richblack-25 p-3 text-[14px];
 } */
 /* Swiper CSS Ends */
+.yellowButton {
+  @apply cursor-pointer rounded-md bg-yellow-50 px-5 py-2 font-semibold text-richblack-900;
+
+  /* Responsive adjustments */
+  @apply md:px-6 md:py-3; /* Medium screens: slightly larger padding */
+  @apply lg:px-8 lg:py-4; /* Large screens: more padding for bigger buttons */
+
+  /* Full width on small screens for better touch accessibility */
+  @apply w-full md:w-auto; /* Full width on small screens, auto width for medium and larger */
+}
 
 .blackButton {
-  @apply cursor-pointer rounded-md bg-richblack-800 px-[20px] py-[8px] font-semibold text-richblack-5;
+  @apply cursor-pointer rounded-md bg-richblack-800 px-5 py-2 font-semibold text-richblack-5;
+
+  /* Responsive adjustments */
+  @apply md:px-6 md:py-3; /* Medium screens: slightly larger padding */
+  @apply lg:px-8 lg:py-4; /* Large screens: more padding for bigger buttons */
+
+  /* Full width on small screens for better touch accessibility */
+  @apply w-full md:w-auto; /* Full width on small screens, auto width for medium and larger */
 }
+
 .lable-style {
   @apply text-[14px] text-richblack-5;
 }

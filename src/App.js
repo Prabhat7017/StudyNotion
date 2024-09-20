@@ -51,7 +51,6 @@ function App() {
 
   return (
     <div className="flex min-h-screen w-screen flex-col bg-richblack-900 font-inter">
-    <React.StrictMode>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -157,7 +156,6 @@ function App() {
         {/* 404 Page */}
         <Route path="*" element={<Error />} />
       </Routes>
-      </React.StrictMode>
     </div>
   )
 }
