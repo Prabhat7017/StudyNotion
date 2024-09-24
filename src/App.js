@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import React from 'react';
 import "./App.css"
 // Redux
@@ -26,6 +26,7 @@ import CourseDetails from "./pages/CourseDetails"
 import Dashboard from "./pages/Dashboard"
 import Error from "./pages/Error"
 import ForgotPassword from "./pages/ForgotPassword"
+import Loader from "./pages/Loader";
 // Pages
 import Home from "./pages/Home"
 import Login from "./pages/Login"
@@ -40,11 +41,13 @@ function App() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { user } = useSelector((state) => state.profile)
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
+      setLoading(true);
       const token = JSON.parse(localStorage.getItem("token"))
-      dispatch(getUserDetails(token, navigate))
+      dispatch(getUserDetails(token, navigate, setLoading))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -53,7 +56,8 @@ function App() {
     <div className="flex min-h-screen w-screen flex-col bg-richblack-900 font-inter">
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        {loading && <Route path="/" element={<Loader />} />}
+        {!loading && <Route path="/" element={<Home />} />}
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="courses/:courseId" element={<CourseDetails />} />
